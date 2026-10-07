@@ -16,6 +16,12 @@ from mini_mlops.model import (
 )
 from mini_mlops.tracking import configure_tracking
 
+from mini_mlops.lineage import (
+    get_git_commit,
+    is_git_dirty,
+    sha256_file,
+)
+
 
 app = typer.Typer()
 
@@ -54,6 +60,10 @@ def train(
         # Log configuration
         # -------------------------
 
+        git_commit = get_git_commit()
+        git_dirty = is_git_dirty()
+        data_sha256 = sha256_file(data_path)
+
         mlflow.log_params(
             {
                 "seed": seed,
@@ -65,6 +75,17 @@ def train(
             }
         )
 
+
+        mlflow.set_tags(
+            {
+                "task": "text-classification",
+                "git_commit": git_commit,
+                "git_dirty": str(git_dirty).lower(),
+                "data_sha256": data_sha256,
+            }
+        )
+
+        
         # -------------------------
         # Build + train
         # -------------------------
@@ -141,6 +162,12 @@ def train(
             f"Model URI: "
             f"{model_info.model_uri}"
         )
+
+        print(f"Run ID: {run.info.run_id}")
+        print(f"Git commit: {git_commit}")
+        print(f"Git dirty: {git_dirty}")
+        print(f"Data SHA256: {data_sha256}")
+        print(f"Model URI: {model_info.model_uri}")
 
 
 @app.command()
