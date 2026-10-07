@@ -1,0 +1,21 @@
+text,label
+"Transformer language model for text classification",nlp
+"BERT model for named entity recognition",nlp
+"Sentiment analysis using language models",nlp
+"Question answering with transformers",nlp
+"Text summarization using encoder decoder models",nlp
+"Image classification with convolutional networks",cv
+"Object detection using YOLO",cv
+"Semantic segmentation for medical images",cv
+"Image augmentation for computer vision",cv
+"Vision transformer for image recognition",cv
+"Deploy machine learning models with Docker",mlops
+"Monitor model drift in production",mlops
+"CI CD pipeline for machine learning",mlops
+"Experiment tracking using MLflow",mlops
+"Model serving using FastAPI",mlops
+"Database indexing optimization",other
+"Distributed systems consensus protocol",other
+"Operating system process scheduler",other
+"Frontend development with React",other
+"Graph algorithms for shortest paths",other

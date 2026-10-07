@@ -1,0 +1,22 @@
+[project]
+name = "mini-mlops"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "tamsles", email = "1448911245@qq.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "mlflow>=3.17.0",
+    "pandas>=3.0.6",
+    "scikit-learn>=1.9.1",
+    "typer>=0.27.3",
+]
+
+[project.scripts]
+mini-mlops = "mini_mlops.cli:app"
+
+[build-system]
+requires = ["uv_build>=0.12.23,<0.13.0"]
+build-backend = "uv_build"
