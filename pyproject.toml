@@ -31,4 +31,5 @@ testpaths = ["tests"]
 addopts = "-ra"
 markers = [
     "integration: tests involving multiple components",
+    "model_quality: model behavior and quality checks",
 ]

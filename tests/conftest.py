@@ -31,3 +31,19 @@ def sample_csv(sample_df, tmp_path):
     sample_df.to_csv(path, index=False)
 
     return path
+
+
+
+from mini_mlops.model import build_model
+
+
+@pytest.fixture
+def fitted_model(sample_df):
+    model = build_model()
+
+    model.fit(
+        sample_df["text"],
+        sample_df["label"],
+    )
+
+    return model
