@@ -1,0 +1,5 @@
+outs:
+- md5: e710a919d52153c5b9927b63e419cb11
+  size: 929
+  hash: md5
+  path: projects.csv
