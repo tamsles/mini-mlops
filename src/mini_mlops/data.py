@@ -3,6 +3,8 @@ from pathlib import Path
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
+from mini_mlops.contracts import validate_training_data
+
 REQUIRED_COLUMNS = {"text", "label"}
 
 def load_data(path : Path) -> pd.DataFrame:
@@ -12,6 +14,8 @@ def load_data(path : Path) -> pd.DataFrame:
 
 def validate_schema(df: pd.DataFrame) -> None:
     """Perform basic schema validation."""
+    validate_training_data(df)
+
     missing_columns = REQUIRED_COLUMNS - set(df.columns)
 
     if missing_columns:
