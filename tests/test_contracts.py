@@ -39,6 +39,11 @@ def test_invalid_text(sample_df, bad_text):
     invalid["text"] = invalid["text"].astype(object)
     invalid.loc[0, "text"] = bad_text
 
+    with pytest.raises(
+        DataContractError,
+        match="Invalid text",
+    ):
+        validate_training_data(invalid)
 
 
 def test_duplicate_text(sample_df):
