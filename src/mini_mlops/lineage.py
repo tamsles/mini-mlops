@@ -46,4 +46,5 @@ def sha256_file(path: Path) -> str:
         while chunk := file.read(8192):
             sha256.update(chunk)
 
+    #  return "0" * 64
     return sha256.hexdigest()
