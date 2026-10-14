@@ -1,9 +1,10 @@
-from fastapi import FastAPI, Request
+
+from fastapi import FastAPI
 from pydantic import BaseModel, Field
 
+from mini_mlops.serving import predict
 from mini_mlops import serving
 from mini_mlops.monitoring import install_monitoring
-
 
 app = FastAPI()
 
@@ -12,7 +13,6 @@ app.state.model_version = serving.MODEL_VERSION
 
 # Register middleware before the app starts serving.
 install_monitoring(app)
-
 
 class PredictRequest(BaseModel):
     text: str = Field(min_length=1)
