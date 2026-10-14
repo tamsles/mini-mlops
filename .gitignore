@@ -12,3 +12,5 @@ wheels/
 # MLflow local state
 mlflow.db
 mlruns/
+
+/state/

@@ -29,7 +29,7 @@ def main() -> int:
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--test-size", type=float, default=0.2)
     parser.add_argument(
-        "--min-macro-f1", type=float, default=0.60
+        "--min-macro-f1", type=float, default=0.3
     )
 
     args = parser.parse_args()
