@@ -9,11 +9,19 @@ from mini_mlops.promotion import (
 champion = read_champion()
 
 if champion is None:
-    raise RuntimeError("Champion is not initialized")
+    raise RuntimeError(
+        "No champion has been promoted"
+    )
 
-model = load_champion_model()
+mlflow.set_tracking_uri(
+    champion["tracking_uri"]
+)
 
-model_version = champion["run_id"]
+model = mlflow.sklearn.load_model(
+    champion["model_uri"]
+)
+
+MODEL_VERSION = champion["run_id"]
 
 # # Load once when the service starts.
 # model = mlflow.sklearn.load_model("serving_model")
